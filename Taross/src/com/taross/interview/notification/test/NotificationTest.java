@@ -12,6 +12,7 @@ import com.taross.interview.notification.consumer.ServiceProcessor;
 import com.taross.interview.notification.injector.EmailServiceProvider;
 import com.taross.interview.notification.injector.MessageServiceProvider;
 import com.taross.interview.notification.injector.SmsServiceProvider;
+import com.taross.interview.notification.injector.NotificationServiceProvider;
 
 public class NotificationTest {
 	private final static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -54,7 +55,7 @@ public class NotificationTest {
 	@Test
 	public void testNotifyPush() {
 		// test Push
-		MessageServiceProvider messageServiceProvider = new NotificationServiceProvider();
+		MessageServiceProvider messageServiceProvider = new NotificationServiceProvider(); //added NotificationServiceProvider class, along with its service
 		ServiceProcessor processor = messageServiceProvider.getProcessor();
 		processor.processMessages("What's the benefit of dependency injection?", "tarossservice@gmail.com");
 		assertEquals(outContent.toString(),
